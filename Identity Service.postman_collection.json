@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "82759edb-b321-4d2b-88e3-e672895c865e",
+		"name": "Identity Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25177966"
+	},
+	"item": [
+		{
+			"name": "Notes API",
+			"item": [
+				{
+					"name": "Get All Notes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU4MjUzNCwiaWF0IjoxNzI2NTc4OTM0LCJqdGkiOiJiYmU5YWI4YS1kZjM4LTRkYTMtOWE2MC0zNThiMzA0OTY3OWYiLCJzY29wZSI6IlJPTEVfQURNSU4gUkVKRUNUX1BPU1QifQ.loKwe0XqSc4lhAk_wCLD0T1Y2ryny1TLH3c9u5GFD3B4ks3_Ae8rOE5HW7TkmhiqVfXCkL2ySW8i94xXUIJw-Q"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/identity/notes?pageSize=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"identity",
+								"notes"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Notes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU4MjUzNCwiaWF0IjoxNzI2NTc4OTM0LCJqdGkiOiJiYmU5YWI4YS1kZjM4LTRkYTMtOWE2MC0zNThiMzA0OTY3OWYiLCJzY29wZSI6IlJPTEVfQURNSU4gUkVKRUNUX1BPU1QifQ.loKwe0XqSc4lhAk_wCLD0T1Y2ryny1TLH3c9u5GFD3B4ks3_Ae8rOE5HW7TkmhiqVfXCkL2ySW8i94xXUIJw-Q"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"ABCD5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/notes"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User API",
+			"item": [
+				{
+					"name": "create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU1OTg1NiwiaWF0IjoxNzI2NTU2MjU2LCJqdGkiOiJjMjFiMzhhMS1hNzY2LTQ1ZTgtYThhYS01ZGI0MTVhMDg4MjYiLCJzY29wZSI6IlJPTEVfQURNSU4ifQ.WSfgq-KWG8IVobsedVjkrlETklNvOAhtEnQsRxtnY1RUezyw0RjGhpu9lDIaMNA2UVN2vLMpqklgoLZCbM-jJQ"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"james\",\r\n    \"password\": \"12345678\",\r\n    \"firstName\": \"James\",\r\n    \"lastName\": \"Bond\",\r\n    \"dob\": \"1970-04-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/users"
+					},
+					"response": []
+				},
+				{
+					"name": "update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU2MDAzMiwiaWF0IjoxNzI2NTU2NDMyLCJqdGkiOiJlYWVhNzEwNi1lOTgxLTQ2MjYtYTdiNC0xYTYzNTNjYjkyMzUiLCJzY29wZSI6IlJPTEVfQURNSU4ifQ.4e7sGGarS_uRVFJB60DVKiNOzPeSHhS_DjXfpJJRJ-hlHIcxwHXlXmgz6HyKLHlZAkF4Oqx12laWDPtmdvdXpA"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"admin\",\r\n    \"firstName\": \"Admin\",\r\n    \"lastName\": \"Admin\",\r\n    \"dob\": \"1990-09-02\",\r\n    \"roles\": [\r\n        \"ADMIN\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/users/829aac5a-7074-4246-862b-086efd2b9420"
+					},
+					"response": []
+				},
+				{
+					"name": "delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJqYW5lNyIsImV4cCI6MTcxMDU2MDUzMywiaWF0IjoxNzEwNTU2OTMzLCJ1c2VySWQiOiJDdXN0b20ifQ.P5Hgm-lS5KruujlCiMUAWkT8HKuCj6GMSUjPuPGDivC_jotYtpS_dtSwtvK5unGnNu14msZhRL-fOjJ2AqsFgQ"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/identity/users/d6543cca-14a1-4805-847a-500de211e99b"
+					},
+					"response": []
+				},
+				{
+					"name": "get User by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJqYW5lMTAiLCJleHAiOjE3MTExNzE4ODIsImlhdCI6MTcxMTE2ODI4Miwic2NvcGUiOiJVU0VSIn0.fIZ0-yTfzT_thtww0iBso8rmr3qmLp7RPiwVasROzeX3vjcI82AIhVRmF2HOo02arKN0XbTdXLp6qM7zN2k8Ig"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/identity/users/18bcec35-7021-4b3d-922d-e977f285ac2d"
+					},
+					"response": []
+				},
+				{
+					"name": "get MyInfo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcxMjg0NTAwMywiaWF0IjoxNzEyODQxNDAzLCJqdGkiOiJlYTA2NDI3YS1hN2JhLTRiM2QtYjY5NC1kNjE5YTZjODM4NzciLCJzY29wZSI6IlJPTEVfQURNSU4gUkVKRUNUX1BPU1QgQVBQUk9WRV9QT1NUIENSRUFURV9QT1NUIn0.EMScxP_fURoL2gT_pGONnP0sPhlzs9Gh-pEeVbbibz7onUU_OREaBOCXm83TmixZ69Yi8qTZ1Z_peqkaexDClA"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/identity/users/my-info"
+					},
+					"response": []
+				},
+				{
+					"name": "get Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU2MDAzMiwiaWF0IjoxNzI2NTU2NDMyLCJqdGkiOiJlYWVhNzEwNi1lOTgxLTQ2MjYtYTdiNC0xYTYzNTNjYjkyMzUiLCJzY29wZSI6IlJPTEVfQURNSU4ifQ.4e7sGGarS_uRVFJB60DVKiNOzPeSHhS_DjXfpJJRJ-hlHIcxwHXlXmgz6HyKLHlZAkF4Oqx12laWDPtmdvdXpA"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/identity/users"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authenticate API",
+			"item": [
+				{
+					"name": "get token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/auth/token"
+					},
+					"response": []
+				},
+				{
+					"name": "refresh Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU1OTg1NiwiaWF0IjoxNzI2NTU2MjU2LCJqdGkiOiJjMjFiMzhhMS1hNzY2LTQ1ZTgtYThhYS01ZGI0MTVhMDg4MjYiLCJzY29wZSI6IlJPTEVfQURNSU4ifQ.WSfgq-KWG8IVobsedVjkrlETklNvOAhtEnQsRxtnY1RUezyw0RjGhpu9lDIaMNA2UVN2vLMpqklgoLZCbM-jJQ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/auth/refresh"
+					},
+					"response": []
+				},
+				{
+					"name": "introspect token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU1OTg1NiwiaWF0IjoxNzI2NTU2MjU2LCJqdGkiOiJjMjFiMzhhMS1hNzY2LTQ1ZTgtYThhYS01ZGI0MTVhMDg4MjYiLCJzY29wZSI6IlJPTEVfQURNSU4ifQ.WSfgq-KWG8IVobsedVjkrlETklNvOAhtEnQsRxtnY1RUezyw0RjGhpu9lDIaMNA2UVN2vLMpqklgoLZCbM-jJQ\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/auth/introspect"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTI2NjAzNSwiaWF0IjoxNzE1MjYyNDM1LCJqdGkiOiJhNDg2YzI5OC1mYzU1LTQ1MmEtOTI3MS0xMzRlMzA2ZjI0Y2IiLCJzY29wZSI6IlJPTEVfQURNSU4ifQ.00d2mLpFTnZICKqlVYiRJBP0zOdzRk6XJRVb_RWgQtaf6_bmj43zGWKMEzpz2ZzkwBMRz4hTLLFCdh4uBMzNXw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/auth/logout"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles API",
+			"item": [
+				{
+					"name": "create Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU2MDAzMiwiaWF0IjoxNzI2NTU2NDMyLCJqdGkiOiJlYWVhNzEwNi1lOTgxLTQ2MjYtYTdiNC0xYTYzNTNjYjkyMzUiLCJzY29wZSI6IlJPTEVfQURNSU4ifQ.4e7sGGarS_uRVFJB60DVKiNOzPeSHhS_DjXfpJJRJ-hlHIcxwHXlXmgz6HyKLHlZAkF4Oqx12laWDPtmdvdXpA"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ADMIN\",\r\n    \"description\": \"Admin role\",\r\n    \"permissions\" : [\"Reject_POST\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "get Roles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcxMTg4NjY2NCwiaWF0IjoxNzExODgzMDY0LCJzY29wZSI6IiJ9.8Pfh79dv-QZqlE9pLKIucRF-4fGqDba0S28ZRvtHN8R98vKoCHY89ZRcmhjl-nEA02dbCV59a3IhEIk0QOcWLQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/identity/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "delete Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcxMTgwMDA4MiwiaWF0IjoxNzExNzk2NDgyLCJzY29wZSI6IiJ9.hxJ_MtsDqXJRtZXwVF7jgVFRjHzll2daoaRBwPi8TR3A-ztbCzG247BR6cG4s-QduMEaFuhGdQb8VSYwX7gI6g"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"USER\",\r\n    \"description\": \"User role\",\r\n    \"permissions\" : [\"READ_DATA\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/roles/ADMIN"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Permission API",
+			"item": [
+				{
+					"name": "get Permissions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU2MDAzMiwiaWF0IjoxNzI2NTU2NDMyLCJqdGkiOiJlYWVhNzEwNi1lOTgxLTQ2MjYtYTdiNC0xYTYzNTNjYjkyMzUiLCJzY29wZSI6IlJPTEVfQURNSU4ifQ.4e7sGGarS_uRVFJB60DVKiNOzPeSHhS_DjXfpJJRJ-hlHIcxwHXlXmgz6HyKLHlZAkF4Oqx12laWDPtmdvdXpA"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/identity/permissions"
+					},
+					"response": []
+				},
+				{
+					"name": "delete permission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcxMTgwMDA4MiwiaWF0IjoxNzExNzk2NDgyLCJzY29wZSI6IiJ9.hxJ_MtsDqXJRtZXwVF7jgVFRjHzll2daoaRBwPi8TR3A-ztbCzG247BR6cG4s-QduMEaFuhGdQb8VSYwX7gI6g"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/identity/permissions/CREATE_DATA"
+					},
+					"response": []
+				},
+				{
+					"name": "create Permission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcyNjU1OTg1NiwiaWF0IjoxNzI2NTU2MjU2LCJqdGkiOiJjMjFiMzhhMS1hNzY2LTQ1ZTgtYThhYS01ZGI0MTVhMDg4MjYiLCJzY29wZSI6IlJPTEVfQURNSU4ifQ.WSfgq-KWG8IVobsedVjkrlETklNvOAhtEnQsRxtnY1RUezyw0RjGhpu9lDIaMNA2UVN2vLMpqklgoLZCbM-jJQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"REJECT_POST\",\r\n    \"description\": \"Reject a post\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/identity/permissions"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
