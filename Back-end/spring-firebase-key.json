@@ -1,0 +1,13 @@
+{
+  "type": "your_info",
+  "project_id": "your_info",
+  "private_key_id": "your_info",
+  "private_key":"your_info",
+  "client_email": "your_info",
+  "client_id": "your_info",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "your_info",
+  "universe_domain": "googleapis.com"
+}

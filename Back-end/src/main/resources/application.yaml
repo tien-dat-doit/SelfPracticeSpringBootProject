@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  forward-headers-strategy: framework
+  servlet:
+    context-path: /identity
+
+spring:
+  datasource:
+    url: ${DBMS_CONNECTION:jdbc:mysql://localhost:3306/identity_service}
+    driverClassName: "com.mysql.cj.jdbc.Driver"
+    password: ${DBMS_PASSWORD:your_password}
+    username: ${DBMS_USERNAME:root}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+jwt:
+  signerKey: "1TjXchw5FloESb63Kc+DFhTARvpWL4jUGCwfGWxuG5SIf/1y/LgJxHnMqaF6A/ij"
+  valid-duration: 3600 # in second
+  refreshable-duration: 36000 # in seconds
+
+openapi:
+  service:
+    api-docs: api-service
+    server: http://localhost:8080/identity
+    title: API Note Service
+    version: 1.0.0
