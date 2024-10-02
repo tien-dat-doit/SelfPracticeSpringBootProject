@@ -7,9 +7,8 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import * as React from "react";
-// import { PaginationType } from "../../types/CommonType";
 import moment from "moment";
+import * as React from "react";
 import { SingleUserResponse } from "../../types/AuthType/UserType";
 import UserAPI from "../../utils/UserAPI";
 
@@ -39,38 +38,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function ListUser() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [listUser, setListUser] = React.useState<SingleUserResponse[] | []>([]);
-  // const [pagination, setPagination] = React.useState<PaginationType>({
-  //   pageNumber: 1,
-  //   pageSize: 10,
-  //   totalItem: 10,
-  //   totalPage: 1,
-  // });
   const [filter, setFilter] = React.useState<any>({
     page: 1,
     size: 10,
   });
-  // const handleChangePage = (event: unknown, newPage: number) => {
-  //   console.log(newPage);
-  //   setFilter((prev: any) => ({ ...prev, page: newPage + 1 }));
-  // };
-
-  // const handleChangeRowsPerPage = (
-  //   event: React.ChangeEvent<HTMLInputElement>
-  // ) => {
-  //   setFilter((prev: any) => ({ ...prev, page: 1, size: +event.target.value }));
-  // };
 
   const fetchAllUser = React.useCallback(async () => {
     try {
       setIsLoading(true);
       const data = await UserAPI.getAll(filter);
       setListUser(data.result);
-      // setPagination({
-      //   pageNumber: data.page,
-      //   pageSize: data.size,
-      //   totalItem: data.total,
-      //   totalPage: data.totalPages,
-      // });
     } catch (error) {
       console.log("Error get list User: ", error);
     } finally {
@@ -126,50 +103,29 @@ export default function ListUser() {
               isLoading === false &&
               listUser.map((row, index) => (
                 <StyledTableRow key={index}>
+                  <StyledTableCell align="center">{index + 1}</StyledTableCell>
                   <StyledTableCell align="center">
-                    {/* {(pagination.pageNumber - 1) * pagination.pageSize + index + 1} */}
-                    {index + 1}
+                    {row.lastName + " " + row.firstName}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row.lastName  + " "+ row.firstName}
-                  </StyledTableCell>
-                  <StyledTableCell
-                    align="center"
-
-                    // sx={{
-                    //   overflow: "hidden",
-                    //   textOverflow: "ellipsis",
-                    //   whiteSpace: "nowrap",
-                    //   maxWidth: "250px",
-                    // }}
-                  >
                     {row.username}
                   </StyledTableCell>
 
                   <StyledTableCell align="center">
-                    {row.dob ? moment(row.dob).format("DD/MM/YYYY") : "Chưa cập nhật"}
+                    {row.dob
+                      ? moment(row.dob).format("DD/MM/YYYY")
+                      : "Chưa cập nhật"}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row.roles[0].name === "ADMIN" ? "Quản trị viên" : "Người dùng"}
+                    {row.roles[0].name === "ADMIN"
+                      ? "Quản trị viên"
+                      : "Người dùng"}
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
           </TableBody>
         </Table>
       </TableContainer>
-      {/* <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={pagination.totalItem}
-        rowsPerPage={pagination.pageSize}
-        page={pagination.pageNumber - 1}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        labelRowsPerPage="Hàng trên trang"
-        labelDisplayedRows={({ from, to, count }) => {
-          return `${from}–${to} / ${count !== -1 ? count : `nhiều hơn ${to}`}`;
-        }}
-      /> */}
     </Paper>
   );
 }

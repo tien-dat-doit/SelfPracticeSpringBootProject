@@ -31,7 +31,6 @@ public class UserController {
             summary = "Create a new user",
             description = "Send a request via this API to create new user",
             security = { @SecurityRequirement(name = "bearer-key") })
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request) {
         return ApiResponse.<UserResponse>builder()

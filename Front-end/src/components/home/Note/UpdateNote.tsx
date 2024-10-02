@@ -18,6 +18,7 @@ import NoteAPI from "../../../utils/NoteAPI";
 
 import { NoteType } from "../../../types/Note/NoteType";
 import LoadingComponentVersion2 from "../../common/loading/Backdrop";
+import { QueryClient } from "@tanstack/react-query";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("*Tên tiêu đề không được để trống!"),
@@ -27,13 +28,13 @@ const validationSchema = Yup.object({
 type ModalUpdateNoteProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  fetchListNotes: () => void;
+  queryClient: QueryClient
   data: NoteType;
 };
 export default function ModalUpdateNote({
   open,
   setOpen,
-  fetchListNotes,
+  queryClient,
   data,
 }: ModalUpdateNoteProps) {
   
@@ -64,7 +65,7 @@ export default function ModalUpdateNote({
                 console.log({ response });
                 setOpen(false);
                 toast.success("Cập nhật thành công !");
-                fetchListNotes();
+                queryClient.invalidateQueries({queryKey: ['notes']})
               } catch (error) {
                 toast.error("Cập nhật thất bại !");
               }

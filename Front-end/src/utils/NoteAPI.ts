@@ -1,10 +1,11 @@
 import { NoteResponse } from "../types/Note/NoteType";
 import axiosClient from "./axiosClient";
 const NoteAPI = {
-  getAll: (params: any) => {
+  getAll: (params: any, signal: any) => {
     const url = "/notes";
     return axiosClient.get<any, NoteResponse>(url, {
       params,
+      signal,
       paramsSerializer: {
         indexes: null, // by default: false
       },

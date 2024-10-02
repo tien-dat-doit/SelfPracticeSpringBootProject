@@ -15,6 +15,7 @@ import * as React from "react";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import NoteAPI from "../../../utils/NoteAPI";
+import { QueryClient } from "@tanstack/react-query";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("*Tên tiêu đề không được để trống!"),
@@ -25,12 +26,12 @@ const validationSchema = Yup.object({
 type ModalCreateNoteProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  fetchListNotes: () => void;
+  queryClient: QueryClient
 };
 export default function ModalCreateNote({
   open,
   setOpen,
-  fetchListNotes,
+  queryClient,
 }: ModalCreateNoteProps) {
   const [imgSrc, setImgSrc] = React.useState<string | null>(null);
   const handleClose = () => {
@@ -60,7 +61,7 @@ export default function ModalCreateNote({
               console.log({ response });
               setOpen(false);
               toast.success("Tạo thành công !");
-              fetchListNotes();
+              queryClient.invalidateQueries({queryKey: ['notes']})
             } catch (error) {
               toast.error("Tạo thất bại !");
             }

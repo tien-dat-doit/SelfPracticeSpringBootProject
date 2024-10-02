@@ -8,17 +8,18 @@ import { toast } from "react-toastify";
 import NoteAPI from "../../../utils/NoteAPI";
 import LoadingComponentVersion2 from "../../common/loading/Backdrop";
 import { NoteType } from "../../../types/Note/NoteType";
+import { QueryClient } from "@tanstack/react-query";
 
 type ModalDeleteNoteProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  fetchAllNote: () => void;
+  queryClient: QueryClient
   data: NoteType | null;
 };
 export default function ModalDeleteNote({
   open,
   setOpen,
-  fetchAllNote,
+  queryClient,
   data,
 }: ModalDeleteNoteProps) {
   const handleClose = () => {
@@ -30,7 +31,7 @@ export default function ModalDeleteNote({
       const response = await NoteAPI.delete(data?.id || "");
       console.log({ response });
       toast.success("Xóa thành công");
-      fetchAllNote();
+      queryClient.invalidateQueries({queryKey: ['notes']})
     } catch (error: any) {
       toast.error(
         error?.response?.data ? error?.response?.data?.error : "Xóa thất bại"

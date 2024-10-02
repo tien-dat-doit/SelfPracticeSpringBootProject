@@ -1,5 +1,5 @@
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import PetsIcon from "@mui/icons-material/Pets";
+import EditNoteIcon from '@mui/icons-material/EditNote';
 import {
   Box,
   Button,
@@ -16,7 +16,10 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { LoadingComponentVersion2 } from "../../../components/common/loading/Backdrop";
 import AuthAPI from "../../../utils/AuthAPI";
+import moment from "moment";
 
+const today = new Date();
+const tenYearsAgo = new Date(today.setFullYear(today.getFullYear() - 10));
 const validationSchema = Yup.object({
   username: Yup.string()
     .required("*Tên đăng nhập không được để trống !"),
@@ -28,7 +31,9 @@ const validationSchema = Yup.object({
   .required("*Tên không được để trống !"),
   lastName: Yup.string()
   .required("*Tên Họ không được để trống !"),
- 
+  dob: Yup.date()
+  .required('Ngày sinh là bắt buộc')
+  .max(tenYearsAgo, 'Bạn phải lớn hơn 10 tuổi'),
 });
 
 export default function Register() {
@@ -63,27 +68,27 @@ export default function Register() {
           <Avatar
             sx={{
               m: 1,
-              bgcolor: "#ff5722",
+              bgcolor: "#2fddf0",
             }}
           >
-            <PetsIcon />
+            <EditNoteIcon />
           </Avatar>
           <Typography component="h1" variant="h5" sx={{ mb: 2 }}>
-            Chào mừng bạn đến với PET SPA
+            Chào mừng bạn đến với NOTE APP
           </Typography>
           <Formik
             initialValues={{
+              firstName: "",
+              lastName: "",
               username: "",
               password: "",
-              fullName: "",
-              phoneNumber: "",
-              email: "",
+              dob: "",
             }}
             validationSchema={validationSchema}
             onSubmit={async (values) => {
               try {
                 setIsLoading(true);              
-                await AuthAPI.customerRegistAccount(values)
+                await AuthAPI.customerRegistAccount({...values, dob: moment(values.dob).format("YYYY-MM-DD")})
                 toast.success("Đăng kí tài khoản thành công !");
                 navigate("/login")
               } catch (error) {
@@ -229,7 +234,7 @@ export default function Register() {
                   fullWidth
                   style={{
                     borderRadius: 35,
-                    backgroundColor: "#ff5722",
+                    backgroundColor: "#2fddf0",
                     // padding: "18px 36px",
                     fontSize: "18px",
                   }}

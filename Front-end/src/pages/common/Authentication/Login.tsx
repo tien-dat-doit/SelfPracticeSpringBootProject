@@ -1,5 +1,5 @@
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import PetsIcon from "@mui/icons-material/Pets";
+import EditNoteIcon from '@mui/icons-material/EditNote';
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Checkbox from "@mui/material/Checkbox";
@@ -60,10 +60,10 @@ export default function Login() {
           <Avatar
             sx={{
               m: 1,
-              bgcolor: "#ff5722",
+              bgcolor: "#2fddf0",
             }}
           >
-            <PetsIcon />
+            <EditNoteIcon />
           </Avatar>
           <Typography component="h1" variant="h5" sx={{ mb: 2 }}>
             Chào mừng bạn đến với NOTE APP
@@ -190,7 +190,7 @@ export default function Login() {
                   fullWidth
                   style={{
                     borderRadius: 35,
-                    backgroundColor: "#ff5722",
+                    backgroundColor: "#2fddf0",
                     // padding: "18px 36px",
                     fontSize: "18px",
                   }}
